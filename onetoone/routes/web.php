@@ -24,3 +24,10 @@ Route::get('/insert', function () {
    $user->address()->save($address);
 
 });
+
+//update data 
+Route::get('/update', function () {
+   $address = Address::whereUserId(1)->first();
+   $address ->name='update gopal nagar paratwada';
+   $address->save();
+});
