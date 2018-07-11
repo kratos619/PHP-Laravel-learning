@@ -1,5 +1,6 @@
 <?php
-
+use App\User;
+use App\Address;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,4 +15,12 @@
 Route::get('/', function () {
    // return view('welcome');
     echo "<h1>HI there</h1>";
+});
+//insert data
+
+Route::get('/insert', function () {
+   $user = User::findOrFail(2);
+   $address = new Address(['name'=>'gopal nagar paratwada']);
+   $user->address()->save($address);
+
 });
