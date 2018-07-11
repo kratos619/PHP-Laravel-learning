@@ -19,7 +19,7 @@ Route::get('/', function () {
 //insert data
 
 Route::get('/insert', function () {
-   $user = User::findOrFail(2);
+   $user = User::findOrFail(1);
    $address = new Address(['name'=>'gopal nagar paratwada']);
    $user->address()->save($address);
 
@@ -30,4 +30,18 @@ Route::get('/update', function () {
    $address = Address::whereUserId(1)->first();
    $address ->name='update gopal nagar paratwada';
    $address->save();
+});
+
+//\Read data 
+Route::get('/read', function () {
+   $user = User::findOrFail(1);
+   echo  $user->address->name;
+});
+//\delete data 
+Route::get('/delete', function () {
+   $user = User::findOrFail(1);
+   if($user->address()->delete()){
+ echo "Seccessfully delete";
+   }
+    
 });
